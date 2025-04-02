@@ -144,6 +144,22 @@ public class FFmpegKitFlutterPlugin implements FlutterPlugin, ActivityAware, Met
     private EventChannel.EventSink eventSink;
     private final FFmpegKitFlutterMethodResultHandler resultHandler;
 
+    static {
+        try {
+            System.loadLibrary("avcodec");
+            System.loadLibrary("avfilter");
+            System.loadLibrary("avformat");
+            System.loadLibrary("avutil");
+            System.loadLibrary("swresample");
+            System.loadLibrary("swscale");
+            System.loadLibrary("ffmpegkit");
+            // ...any others if you renamed them or use more
+        } catch (UnsatisfiedLinkError e) {
+            Log.e("FFmpegKitPlugin", "Native library load failed", e);
+        }
+    }
+
+
     public FFmpegKitFlutterPlugin() {
         this.logsEnabled = new AtomicBoolean(false);
         this.statisticsEnabled = new AtomicBoolean(false);
