@@ -79,7 +79,7 @@ Pod::Spec.new do |s|
   s.subspec 'audio' do |ss|
     ss.source_files         = 'Classes/**/*'
     ss.public_header_files  = 'Classes/**/*.h'
-    # ss.dependency 'ffmpeg-kit-ios-audio', "6.0"
+    ss.vendored_frameworks  = 'libs/ffmpeg-kit-ios-audio.xcframework'
     ss.ios.deployment_target = '12.1'
   end
 
