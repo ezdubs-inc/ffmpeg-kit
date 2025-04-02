@@ -79,7 +79,7 @@ Pod::Spec.new do |s|
   s.subspec 'audio' do |ss|
     ss.source_files         = 'Classes/**/*'
     ss.public_header_files  = 'Classes/**/*.h'
-    ss.vendored_frameworks  = 'libs/ffmpegkit.xcframework'
+    ss.vendored_frameworks  = 'libs/*.xcframework'
     ss.xcconfig = {
     'FRAMEWORK_SEARCH_PATHS' => '$(PODS_ROOT)/ffmpeg_kit_flutter_audio/libs',
     'HEADER_SEARCH_PATHS' => '$(PODS_ROOT)/ffmpeg_kit_flutter_audio/libs/ffmpegkit.xcframework/ios-arm64/ffmpegkit.framework/Headers'
