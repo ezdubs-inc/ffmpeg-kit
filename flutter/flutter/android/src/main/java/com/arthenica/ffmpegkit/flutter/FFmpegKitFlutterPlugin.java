@@ -146,6 +146,7 @@ public class FFmpegKitFlutterPlugin implements FlutterPlugin, ActivityAware, Met
 
     public static void loadFFmpegKitLibraries() {
     try {
+        System.loadLibrary("c++_shared");
         System.loadLibrary("avcodec");
         System.loadLibrary("avfilter");
         System.loadLibrary("avformat");
