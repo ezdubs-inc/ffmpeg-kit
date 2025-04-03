@@ -197,11 +197,23 @@ public class FFmpegKitFlutterPlugin implements FlutterPlugin, ActivityAware, Met
         });
     }
 
-    @Override
-    public void onAttachedToEngine(@NonNull final FlutterPluginBinding flutterPluginBinding) {
-        // FFmpegKitFlutterPlugin.loadFFmpegKitLibraries();
-        this.flutterPluginBinding = flutterPluginBinding;
+    // @Override
+    // public void onAttachedToEngine(@NonNull final FlutterPluginBinding flutterPluginBinding) {
+    //     // FFmpegKitFlutterPlugin.loadFFmpegKitLibraries();
+    //     this.flutterPluginBinding = flutterPluginBinding;
     }
+
+    @Override
+    public void onAttachedToEngine(@NonNull FlutterPluginBinding binding) {
+        try {
+            FFmpegKitFlutterPlugin.loadFFmpegKitLibraries(); // explicit, catchable
+        } catch (Exception e) {
+            Log.e("FFmpegKitPlugin", "Failed to load native libraries", e);
+        }
+        this.flutterPluginBinding = binding;
+        init(binding.getBinaryMessenger(), binding.getApplicationContext(), null, null, null);
+    }
+
 
     @Override
     public void onDetachedFromEngine(@NonNull final FlutterPluginBinding binding) {
